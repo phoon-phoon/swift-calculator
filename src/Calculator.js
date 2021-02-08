@@ -17,7 +17,16 @@ function Calculator() {
     console.log("Calculator.keyToValue", action);
 
     // Detect Zero in Prefix
-    if (action == "0" && value == "0") {
+    if ((action == "0" && value == "0") || (action == "." && value.charAt(value.length - 1) == ".")) {
+      return;
+    }
+
+    if (
+      (action === "+" || action === "-" || action === "/" || action === "*") && 
+      (value.charAt(value.length - 1) === "+" || value.charAt(value.length - 1) === "-" || value.charAt(value.length - 1) === "/" || value.charAt(value.length - 1) === "*")
+    ) {
+      // let newValue = value.substring(0, value.length - 1);
+      // setValue(newValue ? newValue : "0");
       return;
     }
 
